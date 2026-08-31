@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirecting… — Tango Rendezvous</title>
+<style type="text/css" media="all">
+.redirect-body{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.redirect-wrap{
+  max-width: 640px;
+  padding: 32px;
+  text-align: center;
+}
+.redirect-message{
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.3rem, 3.2vw, 1.8rem);
+  line-height: 1.55;
+  color: var(--ink);
+}
+.redirect-message strong{
+  color: var(--red);
+}
+.redirect-message a{
+  color: var(--red);
+  text-decoration: underline;
+}
+.redirect-message a:hover{
+  text-decoration: none;
+}
+</style>
+
+<!-- Fallback for browsers with JS disabled: redirects after 2s.
+     Keep this in sync with REDIRECT_URL / REDIRECT_DELAY in js/redirect.js -->
+<meta http-equiv="refresh" content="2;url=https://www.ithacatangoweekend.com/home">
+</head>
+<body class="redirect-body">
+
+  <main class="redirect-wrap">
+    <p class="redirect-message">
+      Ithaca Tango Weekend marathon edition has become
+      <strong>Ithaca Tango Rendezvous</strong>. You will be redirected
+      shortly. If not, please follow this
+      <a id="redirect-link" href="https://www.ithacatangoweekend.com/home">link</a>.
+    </p>
+  </main>
+
+
+<script>
+const REDIRECT_URL = "https://www.ithacatangoweekend.com/home";
+const REDIRECT_DELAY = 2000;
+
+(function initRedirect() {
+  const link = document.getElementById("redirect-link");
+  if (link) link.href = REDIRECT_URL;
+
+  window.setTimeout(() => {
+    window.location.replace(REDIRECT_URL);
+  }, REDIRECT_DELAY);
+})();
+</script>
+</body>
+</html>
